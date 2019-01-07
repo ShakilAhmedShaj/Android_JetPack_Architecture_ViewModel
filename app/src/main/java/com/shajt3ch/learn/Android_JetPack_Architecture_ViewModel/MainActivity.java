@@ -1,5 +1,6 @@
 package com.shajt3ch.learn.Android_JetPack_Architecture_ViewModel;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -32,8 +33,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mTextView = findViewById(R.id.tvNumber);
-        MainActivityDataGenerator myData = new MainActivityDataGenerator();
-        String myRandomNumber = myData.getNumber();
+        //MainActivityViewModel myData = new MainActivityViewModel();
+        MainActivityViewModel model = ViewModelProviders.of(this).get(MainActivityViewModel.class);
+
+        String myRandomNumber = model.getNumber();
         mTextView.setText(myRandomNumber);
     }
 
